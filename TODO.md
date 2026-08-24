@@ -11,7 +11,7 @@ And one solved problem a day is a perfectly honest daily rhythm, because the con
 comes from you.
 
 ## Steps
-- [ ] Set up repo, structure by topic, standard Markdown format
+- [x] Set up repo, structure by topic, standard Markdown format
 - [ ] Define the template: statement, hint, detailed solution, check, difficulty
 - [ ] Probability topic: conditional expectation, random walks, stopping problems
 - [ ] Combinatorics and counting topic
@@ -31,3 +31,8 @@ enough that the repo is genuinely usable by someone else.
 - Do not copy protected statements from books or paid sites. Rephrase, or create your
   own variants.
 - A solution that skips steps helps nobody, including you.
+- Run `python -m bank.validate` before committing. The format drifts silently once
+  there are dozens of files, and a broken front matter block breaks the index rather
+  than the file.
+- Documentation inside `problems/` is excluded from validation by name. Anything else
+  in that tree is treated as a problem and must carry front matter.

@@ -5,3 +5,7 @@ venv/
 .env
 .DS_Store
 .ipynb_checkpoints/
+*.egg-info/
+.pytest_cache/
+build/
+dist/
