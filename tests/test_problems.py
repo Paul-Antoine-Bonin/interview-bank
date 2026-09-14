@@ -174,6 +174,29 @@ def test_index_counts_by_topic_and_verification(tmp_path):
     assert summary["totals"] == {"problems": 2, "verified": 1}
 
 
+def test_the_template_itself_meets_the_format():
+    # The template is excluded from the collection, but a copy of it must pass,
+    # otherwise every new problem starts out broken.
+    from bank.problems import SECTIONS
+
+    template = Path(__file__).resolve().parents[1] / "problems" / "TEMPLATE.md"
+    problem = parse_problem(template)
+
+    assert validate(problem, required_sections=SECTIONS) == []
+    assert problem.sections() == list(SECTIONS)
+
+
+def test_the_command_line_requires_the_template_sections_by_default(tmp_path, capsys):
+    from bank.validate import main
+
+    write(tmp_path, GOOD, name="probability/a.md")  # has no Hint and no Check
+    assert main(["--root", str(tmp_path)]) == 1
+    out = capsys.readouterr().out
+    assert "missing section: ## Hint" in out
+    assert "missing section: ## Check" in out
+    assert main(["--root", str(tmp_path), "--sections", "Statement"]) == 0
+
+
 def test_documentation_files_are_not_treated_as_problems(tmp_path):
     # problems/README.md describes the format; validating it would always fail.
     from bank.problems import problem_files

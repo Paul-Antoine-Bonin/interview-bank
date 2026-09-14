@@ -29,8 +29,10 @@ problems/markets/         quoting, betting, adverse selection
 src/bank/                 the parser and the checker
 ```
 
-One Markdown file per problem, named by slug, in the folder matching its topic. The
-front matter format is documented in [problems/README.md](problems/README.md).
+One Markdown file per problem, named by slug, in the folder matching its topic. Each
+has the sections Statement, Hint, Solution and Check; copy
+[problems/TEMPLATE.md](problems/TEMPLATE.md) to start one. The full format is documented
+in [problems/README.md](problems/README.md).
 
 ## Keep the collection honest
 
@@ -58,6 +60,6 @@ to add a dependency that can execute arbitrary constructors.
 pytest
 ```
 
-22 tests covering the parser, the validator and the index.
+24 tests covering the parser, the validator, the index and the template.
 
 Roadmap and progress: [TODO.md](TODO.md)
