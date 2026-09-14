@@ -12,7 +12,7 @@ comes from you.
 
 ## Steps
 - [x] Set up repo, structure by topic, standard Markdown format
-- [ ] Define the template: statement, hint, detailed solution, check, difficulty
+- [x] Define the template: statement, hint, detailed solution, check, difficulty
 - [ ] Probability topic: conditional expectation, random walks, stopping problems
 - [ ] Combinatorics and counting topic
 - [ ] Fermi estimation and order-of-magnitude reasoning topic

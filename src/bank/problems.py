@@ -37,6 +37,10 @@ DIFFICULTIES = (1, 2, 3, 4, 5)
 
 REQUIRED_FIELDS = ("title", "topic", "difficulty")
 
+# The body layout every problem follows. Difficulty lives in the front matter,
+# not in a section. See problems/TEMPLATE.md.
+SECTIONS = ("Statement", "Hint", "Solution", "Check")
+
 DEFAULT_ROOT = Path("problems")
 
 # Documentation lives alongside the problems and must not be validated as one.

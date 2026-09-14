@@ -3,6 +3,8 @@
     python -m bank.validate
     python -m bank.validate --sections Statement Solution
 
+By default every problem must carry the sections of problems/TEMPLATE.md.
+
 Exit code is 1 if any file fails, so this can go in a pre-commit hook or CI
 once the collection is large enough to need one.
 """
@@ -14,15 +16,23 @@ import sys
 from pathlib import Path
 from typing import Optional, Sequence
 
-from .problems import DEFAULT_ROOT, ProblemError, index, parse_problem, problem_files, validate
+from .problems import (
+    DEFAULT_ROOT,
+    SECTIONS,
+    ProblemError,
+    index,
+    parse_problem,
+    problem_files,
+    validate,
+)
 
 
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument(
-        "--sections", nargs="*", default=[],
-        help="section headings every problem must carry",
+        "--sections", nargs="*", default=list(SECTIONS),
+        help=f"section headings every problem must carry (default: {' '.join(SECTIONS)})",
     )
     args = parser.parse_args(argv)
 

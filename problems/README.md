@@ -26,4 +26,15 @@ verified: true
 The topic must match the folder the file is in. `python -m bank.validate` checks every
 file and fails if any of that drifts.
 
-The section layout each file uses is the next step in the roadmap.
+After the front matter, the body has four sections, as `##` headings:
+
+| Section | Content |
+|---|---|
+| `## Statement` | the problem in your own words, with every assumption stated |
+| `## Hint` | one or two sentences that unblock without giving the method away |
+| `## Solution` | every step, ending with `**Answer:**` and an exact value where one exists |
+| `## Check` | the Monte Carlo simulation, or the sanity check used where one makes no sense |
+
+Difficulty is the front matter field, not a section. Start a new problem by copying
+[TEMPLATE.md](TEMPLATE.md). `python -m bank.validate` requires all four sections by
+default; `--sections` overrides the list.
